@@ -1,0 +1,24 @@
+train:
+- images/train
+- images/train_augmented
+val: images/valid
+test: images/test
+nc: 17
+names:
+- bee
+- chicken
+- cow
+- creeper
+- enderman
+- fox
+- frog
+- ghast
+- goat
+- llama
+- pig
+- sheep
+- skeleton
+- spider
+- turtle
+- wolf
+- zombie

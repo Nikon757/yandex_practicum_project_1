@@ -1,0 +1,40 @@
+# Зависимости проекта «Детекция персонажей Minecraft: FCOS против YOLOv8s», Python 3.10.
+# Комбинация версий - из урока про MMDetection, на ней проект и обучался.
+#
+# Три пакета ставятся отдельно, обычным `pip install -r` их не поставить:
+#
+# 1. PyTorch - со своего индекса (сборка под CUDA 11.8):
+#    python -m pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1 \
+#        --index-url https://download.pytorch.org/whl/cu118
+#
+# 2. MMCV - через mim, который собирает CUDA-операции под установленный torch:
+#    python -m pip install -U openmim
+#    python -m mim install "mmcv==2.1.0"
+#
+# 3. MMDetection - из исходников, из папки склонированного репозитория:
+#    python -m pip install -v -e . --no-build-isolation
+#
+# Остальное ставится отсюда: python -m pip install -r requirements.txt
+
+# --- MMDetection ------------------------------------------------------------
+mmengine==0.10.7
+numpy==1.26.4              # MMDetection 3.x и torch 2.0 не работают с numpy 2.x
+pycocotools==2.0.11        # COCO-метрики (mAP) для FCOS
+
+# --- YOLOv8 и работа с изображениями ----------------------------------------
+ultralytics==8.0.196
+albumentations==1.3.1      # офлайн-аугментация редких классов (этап 2)
+opencv-python-headless==4.11.0.86   # mmcv дополнительно поставит opencv-python - это нормально
+Pillow==12.3.0
+
+# --- Анализ данных и графики ------------------------------------------------
+pandas==2.3.3
+matplotlib==3.10.9
+seaborn==0.13.2
+tqdm==4.65.2
+PyYAML==6.0.3
+fpdf2==2.7.6               # итоговый PDF-отчёт (этап 7)
+
+# --- Jupyter ----------------------------------------------------------------
+notebook==7.6.2
+ipykernel==7.3.0
